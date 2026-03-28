@@ -7,7 +7,7 @@ from .models import MenuItem, Order, OrderItem
 from django.db.models import Sum
 from datetime import datetime
 
-@login_required
+
 def menu(request):
     items = MenuItem.objects.all()
     categories = ['Breakfast', 'Lunch', 'Dinner']
