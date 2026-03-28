@@ -1,1 +1,1 @@
-python manage.py migrate && gunicorn restaurant_billing.wsgi
+web: python manage.py migrate && python manage.py shell -c "import populate; populate.run()" && gunicorn restaurant_billing.wsgi
