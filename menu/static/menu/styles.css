@@ -1,0 +1,604 @@
+/* Pure CSS for Restaurant Billing Website */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(145deg, #f2f7fb, #d9effa); /* even lighter blue gradient */
+    color: #263238;
+    padding-top: 60px;
+}
+
+.navbar {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    height: 60px;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding: 0;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-links {
+    display: flex;
+    gap: 0;
+    align-items: center;
+}
+
+.navbar a {
+    display: block;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    position: relative;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.category-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    margin: 0 10px;
+}
+
+.category-btn.active {
+    background-color: #333;
+    color: white;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.left-panel {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.right-panel {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 70px;
+    height: fit-content;
+}
+
+.cart-table th, .cart-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.cart-table th {
+    background-color: #f8f8f8;
+}
+
+@media (max-width: 992px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .right-panel {
+        position: static;
+        top: auto;
+        margin-top: 20px;
+    }
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: calc(33.333% - 20px);
+    min-width: 250px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+}
+
+.card-text {
+    margin: 0 0 15px 0;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn-danger {
+    background-color: #f44336;
+}
+
+.btn-danger:hover {
+    background-color: #da190b;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+}
+
+.btn-success:hover {
+    background-color: #45a049;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.qr-code {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.checkout-bg {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.checkout-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    max-width: 480px;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.checkout-card h1 {
+    color: #2c3e50;
+    margin-bottom: 18px;
+}
+
+.order-info {
+    font-size: 18px;
+    color: #34495e;
+    margin: 8px 0;
+}
+
+.upi-text {
+    color: #7f8c8d;
+    margin-top: 12px;
+}
+
+.checkout-buttons {
+    margin-top: 20px;
+}
+
+.checkout-buttons .btn {
+    margin: 0 8px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+}
+
+.btn-outline:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px);
+    }
+
+    .checkout-card {
+        margin: 30px 10px;
+        padding: 20px;
+    }
+}
+
+.bill {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.login-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.login-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+}
+
+.login-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #555;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.login-form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.login-form button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+    background-color: #45a049;
+}
+
+.login-form p {
+    text-align: center;
+    margin-top: 15px;
+    color: red;
+}
+
+.login-form p a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-form p a:hover {
+    text-decoration: underline;
+}
+
+/* Sales Report Styling */
+.container h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #f39c12;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.container p {
+    font-size: 18px;
+    color: #34495e;
+    padding: 10px 0;
+}
+
+/* Cart Page Styling */
+.container .table {
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.container .table thead {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff;
+}
+
+.container .table th {
+    background: transparent;
+    color: #fff;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.container .table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.container .table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.container .table tfoot {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.container .table tfoot th {
+    padding: 15px;
+}
+
+/* Button Group Styling */
+.container form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Form Styling */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 16px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 5px rgba(243, 156, 18, 0.3);
+    outline: none;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .right-panel {
+        position: relative;
+        top: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .navbar {
+        height: 60px;
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .navbar-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .navbar a {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .card {
+        width: calc(50% - 10px);
+    }
+
+    .checkout-card {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+
+    .login-form {
+        margin: 30px 15px;
+        padding: 20px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+
+    .navbar {
+        padding: 8px 10px;
+    }
+
+    .navbar-brand {
+        font-size: 16px;
+    }
+
+    .navbar a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .table {
+        font-size: 13px;
+    }
+
+    .table th,
+    .table td {
+        padding: 6px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .login-form {
+        margin: 20px 10px;
+        max-width: 90%;
+    }
+}

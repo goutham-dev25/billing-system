@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'menu/styles.css' %}">
+</head>
+<body class="login-bg">
+    <div class="container">
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <h1>Sign Up</h1>
+            {{ form.as_p }}
+            <button type="submit" class="btn">Sign Up</button>
+            {% if form.errors %}
+            <p>Please correct the errors below.</p>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'menu/styles.css' %}">
+</head>
+<body class="login-bg">
+    <div class="container">
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <h1>Sign In</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="btn">Login</button>
+            {% if error %}
+            <p>{{ error }}</p>
+            {% endif %}
+            <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+        </form>
+    </div>
+</body>
+</html>
